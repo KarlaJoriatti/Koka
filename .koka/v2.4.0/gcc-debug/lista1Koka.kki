@@ -1,0 +1,50 @@
+module interface lista1Koka
+ 
+//------------------------------
+//#kki: import declarations
+ 
+import std/core/types = std/core/types = "";
+import std/core = std/core = "";
+ 
+//------------------------------
+//#kki: external imports
+ 
+ 
+//------------------------------
+//#kki: fixity declarations
+ 
+ 
+//------------------------------
+//#kki: local imported aliases
+ 
+ 
+//------------------------------
+//#kki: type declarations
+ 
+ 
+//------------------------------
+//#kki: declarations
+ 
+fun ehTriangulo : (a : std/core/types/int, b : std/core/types/int, c : std/core/types/int) -> std/core/types/bool;
+fun tipoTriangulo : (a : std/core/types/int, b : std/core/types/int, c : std/core/types/int) -> std/core/types/string;
+fun somaPares : (n : std/core/types/int) -> <(std/core/types/div :: E)> std/core/types/int;
+fun triangulo : (a : std/core/types/int, b : std/core/types/int, c : std/core/types/int) -> std/core/types/string;
+pub fun main : () -> <(std/core/console :: X),(std/core/types/div :: E)> ();
+ 
+//------------------------------
+//#kki: external declarations
+ 
+ 
+//------------------------------
+//#kki: inline definitions
+ 
+//.inline-section
+fun triangulo // inline size: 3
+  = fn(a: std/core/types/int, b: std/core/types/int, c: std/core/types/int){
+    match ((lista1Koka/ehTriangulo(a, b, c))) {
+      ((std/core/types/True() : std/core/types/bool ) as .pat: std/core/types/bool)
+         -> lista1Koka/tipoTriangulo(a, b, c);
+      ((.skip std/core/types/False() : std/core/types/bool ) as .pat0: std/core/types/bool)
+         -> "nao eh um triangulo";
+    };
+  };

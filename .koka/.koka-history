@@ -1,0 +1,14 @@
+3 == 2
+:r
+:t ehTriangulo
+:t ehTriangulo()
+:l lista1Koka.kk
+ehTriangulo(5,3,3)
+:t fun ehTriangulo()
+:t fn ehTriangulo()
+10 % 2
+3 % 2
+5 % 3
+:t %
+:t (%)
+:q
