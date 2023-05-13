@@ -4,6 +4,7 @@ module interface lista1Koka
 //#kki: import declarations
  
 import std/core/types = std/core/types = "";
+import std/core/hnd = std/core/hnd = "";
 import std/core = std/core = "";
  
 //------------------------------
@@ -26,10 +27,14 @@ import std/core = std/core = "";
 //#kki: declarations
  
 fun ehTriangulo : (a : std/core/types/int, b : std/core/types/int, c : std/core/types/int) -> std/core/types/bool;
+fun primo : (a : std/core/types/int) -> <(std/core/types/div :: X)> std/core/types/bool;
+fun seriePI : (n : std/core/types/float64) -> <(std/core/types/div :: X)> std/core/types/float64;
 fun tipoTriangulo : (a : std/core/types/int, b : std/core/types/int, c : std/core/types/int) -> std/core/types/string;
+//div : may diverge (recursion)
 fun somaPares : (n : std/core/types/int) -> <(std/core/types/div :: E)> std/core/types/int;
+fun somaPot2m : (m : std/core/types/int, n : std/core/types/int) -> <(std/core/types/div :: E)> std/core/types/int;
 fun triangulo : (a : std/core/types/int, b : std/core/types/int, c : std/core/types/int) -> std/core/types/string;
-pub fun main : () -> <(std/core/console :: X),(std/core/types/div :: E)> ();
+pub fun main : () -> <(std/core/console :: X),(std/core/types/div :: X)> ();
  
 //------------------------------
 //#kki: external declarations
@@ -39,6 +44,53 @@ pub fun main : () -> <(std/core/console :: X),(std/core/types/div :: E)> ();
 //#kki: inline definitions
  
 //.inline-section
+specialize "*" fun primo // inline size: 1
+  = fn<<(std/core/types/div :: X)>>(a: std/core/types/int){
+    std/core/types/unsafe-no-local-cast<std/core/types/bool,<(std/core/types/div :: E)>>((forall<(h :: H)> fn<<(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/div :: E)>>(){
+      std/core/hnd/local-var<std/core/types/int,std/core/types/bool,<(std/core/types/div :: E)>,(h :: H)>((std/core/int-sub(a, 1)), (fn<<(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/div :: E)>>(i: (std/core/types/local-var :: (H, V) -> V)<(h :: H),std/core/types/int>){
+          (std/core/hnd/local-var<std/core/types/bool,std/core/types/bool,<(std/core/types/div :: E)>,(h :: H)>(std/core/types/True, (fn<<(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/div :: E)>>(primo0: (std/core/types/local-var :: (H, V) -> V)<(h :: H),std/core/types/bool>){
+              val _0 : ()
+                    = (std/core/while<<(std/core/types/local :: H -> X)<(h :: H)>>>((fn<<(std/core/types/div :: X),(std/core/types/local :: H -> X)<(h :: H)>>>(){
+                        (std/core/(>.1)((std/core/types/local-get<std/core/types/int,(h :: H),<(std/core/types/div :: X)>>(i)), 1));
+                      }), (fn<<(std/core/types/div :: X),(std/core/types/local :: H -> X)<(h :: H)>>>(){
+                        val _ : ()
+                          = (match ((std/core/(==.1)((std/core/(%)(a, (std/core/types/local-get<std/core/types/int,(h :: H),<(std/core/types/div :: X)>>(i)))), 0))) {
+                            ((std/core/types/True() : std/core/types/bool ) as .pat: std/core/types/bool)
+                               -> std/core/types/local-set<std/core/types/bool,<(std/core/types/div :: X)>,(h :: H)>(primo0, std/core/types/False);
+                            ((.skip std/core/types/False() : std/core/types/bool ) as .pat0: std/core/types/bool)
+                               -> std/core/types/();
+                          });
+                        val x0.2011 : std/core/types/int
+                          = (std/core/types/local-get<std/core/types/int,(h :: H),<(std/core/types/div :: X)>>(i));
+                        (std/core/types/local-set<std/core/types/int,<(std/core/types/div :: X)>,(h :: H)>(i, (std/core/int-sub(x0.2011, 1))));
+                      })));
+              (std/core/types/local-get<std/core/types/bool,(h :: H),<(std/core/types/div :: E)>>(primo0));
+            })));
+        }));
+    }))();
+  };
+specialize "*" fun seriePI // inline size: 1
+  = fn<<(std/core/types/div :: X)>>(n: std/core/types/float64){
+    std/core/types/unsafe-no-local-cast<std/core/types/float64,<(std/core/types/div :: E)>>((forall<(h :: H)> fn<<(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/div :: E)>>(){
+      std/core/hnd/local-var<std/core/types/float64,std/core/types/float64,<(std/core/types/div :: E)>,(h :: H)>(1.0, (fn<<(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/div :: E)>>(d: (std/core/types/local-var :: (H, V) -> V)<(h :: H),std/core/types/float64>){
+          (std/core/hnd/local-var<std/core/types/float64,std/core/types/float64,<(std/core/types/div :: E)>,(h :: H)>(1.0, (fn<<(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/div :: E)>>(s: (std/core/types/local-var :: (H, V) -> V)<(h :: H),std/core/types/float64>){
+              (std/core/hnd/local-var<std/core/types/float64,std/core/types/float64,<(std/core/types/div :: E)>,(h :: H)>(0.0, (fn<<(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/div :: E)>>(soma: (std/core/types/local-var :: (H, V) -> V)<(h :: H),std/core/types/float64>){
+                  val _1 : ()
+                        = (std/core/while<<(std/core/types/local :: H -> X)<(h :: H)>>>((fn<<(std/core/types/div :: X),(std/core/types/local :: H -> X)<(h :: H)>>>(){
+                            (std/core/(<.4)((std/core/types/local-get<std/core/types/float64,(h :: H),<(std/core/types/div :: X)>>(d)), n));
+                          }), (fn<<(std/core/types/div :: X),(std/core/types/local :: H -> X)<(h :: H)>>>(){
+                            val _ : ()
+                              = (std/core/types/local-set<std/core/types/float64,<(std/core/types/div :: X)>,(h :: H)>(soma, (std/core/(+.2)((std/core/types/local-get<std/core/types/float64,(h :: H),<(std/core/types/div :: X)>>(soma)), (std/core/(*.1)((std/core/(/.1)(4.0, (std/core/types/local-get<std/core/types/float64,(h :: H),<(std/core/types/div :: X)>>(d)))), (std/core/types/local-get<std/core/types/float64,(h :: H),<(std/core/types/div :: X)>>(s))))))));
+                            val _0 : ()
+                              = (std/core/types/local-set<std/core/types/float64,<(std/core/types/div :: X)>,(h :: H)>(d, (std/core/(+.2)((std/core/types/local-get<std/core/types/float64,(h :: H),<(std/core/types/div :: X)>>(d)), 2.0))));
+                            (std/core/types/local-set<std/core/types/float64,<(std/core/types/div :: X)>,(h :: H)>(s, (std/core/(*.1)((std/core/types/local-get<std/core/types/float64,(h :: H),<(std/core/types/div :: X)>>(s)), -1.0))));
+                          })));
+                  (std/core/types/local-get<std/core/types/float64,(h :: H),<(std/core/types/div :: E)>>(soma));
+                })));
+            })));
+        }));
+    }))();
+  };
 fun triangulo // inline size: 3
   = fn(a: std/core/types/int, b: std/core/types/int, c: std/core/types/int){
     match ((lista1Koka/ehTriangulo(a, b, c))) {
